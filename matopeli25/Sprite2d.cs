@@ -8,14 +8,14 @@ public partial class Sprite2d : Sprite2D
     private int current = 1;  // Nykyinen luku
     private int frameCount = 0; // Framen laskuri
 
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		 // Tulostaa "Hello, World!" konsoliin, kun peli käynnistyy
         GD.Print("Hello, World!");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+
 	public override void _Process(double delta)
 	{
 		// Lisää framen laskuria
