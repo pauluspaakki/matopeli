@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Cell : Sprite2D
+public partial class Cells : Sprite2D
 {
     public Vector2I GridPosition { get; private set; }
     public bool HasObject { get; set; } = false;

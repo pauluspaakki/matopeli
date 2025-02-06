@@ -1,8 +1,45 @@
 [gd_scene load_steps=2 format=3 uid="uid://bi3bc20u4gjy2"]
 
-[ext_resource type="Script" path="res://Sprite2d.cs" id="1_rv56q"]
+[sub_resource type="CSharpScript" id="CSharpScript_ld36a"]
+script/source = "using Godot;
+using System.Collections.Generic;
+
+public partial class Grid : Node2D
+{
+    [Export] public int GridWidth = 15;
+    [Export] public int GridHeight = 13;
+    [Export] public PackedScene CellScene;
+
+    private List<List<Cells>> _grid = new List<List<Cells>>();
+
+    public override void _Ready()
+    {
+        GenerateGrid();
+    }
+
+    private void GenerateGrid()
+    {
+        for (int y = 0; y < GridHeight; y++)
+        {
+            List<Cells> row = new List<Cells>();
+
+            for (int x = 0; x < GridWidth; x++)
+            {
+                Cells cell = (Cells)CellScene.Instantiate();
+                cell.Initialize(new Vector2I(x, y), cell.Texture);
+                AddChild(cell);
+                row.Add(cell);
+            }
+
+            _grid.Add(row);
+        }
+    }
+}
+"
 
 [node name="Node2D" type="Node2D"]
+script = SubResource("CSharpScript_ld36a")
+GridWidth = null
+GridHeight = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-script = ExtResource("1_rv56q")

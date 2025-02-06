@@ -7,7 +7,7 @@ public partial class Grid : Node2D
     [Export] public int GridHeight = 13;
     [Export] public PackedScene CellScene;
 
-    private List<List<Cell>> _grid = new List<List<Cell>>();
+    private List<List<Cells>> _grid = new List<List<Cells>>();
 
     public override void _Ready()
     {
@@ -18,11 +18,11 @@ public partial class Grid : Node2D
     {
         for (int y = 0; y < GridHeight; y++)
         {
-            List<Cell> row = new List<Cell>();
+            List<Cells> row = new List<Cells>();
 
             for (int x = 0; x < GridWidth; x++)
             {
-                Cell cell = (Cell)CellScene.Instantiate();
+                Cells cell = (Cells)CellScene.Instantiate();
                 cell.Initialize(new Vector2I(x, y), cell.Texture);
                 AddChild(cell);
                 row.Add(cell);
